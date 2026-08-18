@@ -1,0 +1,38 @@
+{
+  "name": "Sarah's Curling Stats",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/azure-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts"
+    }
+  },
+  "remoteUser": "vscode",
+  "updateRemoteUserUID": true,
+  "postCreateCommand": "npm install --global @azure/static-web-apps-cli@2.0.10",
+  "forwardPorts": [5500],
+  "portsAttributes": {
+    "5500": {
+      "label": "Live Server",
+      "onAutoForward": "openPreview"
+    }
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ritwickdey.LiveServer",
+        "ms-vscode.azurecli",
+        "ms-azuretools.vscode-azurestaticwebapps"
+      ],
+      "settings": {
+        "liveServer.settings.port": 5500,
+        "liveServer.settings.root": "/",
+        "liveServer.settings.NoBrowser": true,
+        "liveServer.settings.CustomBrowser": "chrome"
+      }
+    }
+  },
+  "shutdownAction": "stopContainer"
+}

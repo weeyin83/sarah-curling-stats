@@ -1,0 +1,262 @@
+
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Sarah's curling tournament appearances, results and trophy wins."
+    />
+    <title>Sarah on Ice | Curling record</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,600;6..72,700&amp;display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="Sarah on Ice, home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>Sarah on Ice</span>
+      </a>
+      <span class="header-note">Tournament archive</span>
+    </header>
+
+    <main id="top">
+      <section class="intro" aria-labelledby="page-title">
+        <div class="intro-copy">
+          <p class="eyebrow">Curling record · 2017–2024</p>
+          <h1 id="page-title">Thrown with purpose.</h1>
+          <p class="lede">
+            A growing record of my competitions, team selections and trophy wins on the ice.
+          </p>
+        </div>
+        <figure class="intro-image">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/1/17/Curling_Stones.jpg"
+            alt="Curling stones arranged across an indoor ice rink"
+          />
+          <figcaption>
+            Photo:
+            <a href="https://commons.wikimedia.org/wiki/File:Curling_Stones.jpg">Michael McCullough</a>,
+            <a href="https://creativecommons.org/licenses/by/2.0/">CC BY 2.0</a>
+          </figcaption>
+        </figure>
+      </section>
+
+      <section class="archive" aria-labelledby="archive-title">
+        <div class="archive-heading">
+          <div>
+            <p class="eyebrow">The record</p>
+            <h2 id="archive-title">Competitions</h2>
+          </div>
+          <label class="search">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <circle cx="11" cy="11" r="7"></circle>
+              <path d="m20 20-4-4"></path>
+            </svg>
+            <span class="sr-only">Search competitions</span>
+            <input
+              id="search-input"
+              type="search"
+              placeholder="Search year, place or competition"
+              autocomplete="off"
+            />
+            <kbd aria-hidden="true">/</kbd>
+          </label>
+        </div>
+
+        <div class="results-meta" aria-live="polite">
+          <p id="result-count">7 competitions</p>
+          <button id="clear-search" class="clear-button" type="button" hidden>Clear search</button>
+        </div>
+
+        <div id="competition-list" class="competition-list">
+          <article
+            class="competition"
+            data-search="season 2023 2024 cleland trophy winner competition winner bellshill curling club"
+          >
+            <div class="year" aria-hidden="true">2023–24</div>
+            <div class="competition-main">
+              <div class="competition-title-row">
+                <h3>Cleland Trophy</h3>
+                <span class="status status-winner">Competition winner</span>
+              </div>
+              <p class="location">Bellshill Curling Club</p>
+              <dl class="details">
+                <div>
+                  <dt>Season</dt>
+                  <dd>2023–2024</dd>
+                </div>
+                <div>
+                  <dt>Result</dt>
+                  <dd>Winner</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article
+            class="competition"
+            data-search="2024 four nations announcement flower bowl preston england 19 21 january tournament unknown 7 december 2023"
+          >
+            <div class="year" aria-hidden="true">2024</div>
+            <div class="competition-main">
+              <div class="competition-title-row">
+                <h3>2024 Four Nations Announcement</h3>
+                <span class="status status-unknown">Result unknown</span>
+              </div>
+              <p class="location">The Flower Bowl · Preston, England</p>
+              <dl class="details">
+                <div>
+                  <dt>Event dates</dt>
+                  <dd>19–21 January 2024</dd>
+                </div>
+                <div>
+                  <dt>Announcement</dt>
+                  <dd><time datetime="2023-12-07">7 December 2023</time></dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article
+            class="competition"
+            data-search="season 2022 2023 bob wilson knock out knockout competition winner bellshill curling club"
+          >
+            <div class="year" aria-hidden="true">2022–23</div>
+            <div class="competition-main">
+              <div class="competition-title-row">
+                <h3>Bob Wilson Knock-Out</h3>
+                <span class="status status-winner">Competition winner</span>
+              </div>
+              <p class="location">Bellshill Curling Club</p>
+              <dl class="details">
+                <div>
+                  <dt>Season</dt>
+                  <dd>2022–2023</dd>
+                </div>
+                <div>
+                  <dt>Result</dt>
+                  <dd>Winner</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article
+            class="competition"
+            data-search="season 2022 2023 cleland trophy runner up runner-up second place bellshill curling club"
+          >
+            <div class="year" aria-hidden="true">2022–23</div>
+            <div class="competition-main">
+              <div class="competition-title-row">
+                <h3>Cleland Trophy</h3>
+                <span class="status status-runner-up">Runner-up</span>
+              </div>
+              <p class="location">Bellshill Curling Club</p>
+              <dl class="details">
+                <div>
+                  <dt>Season</dt>
+                  <dd>2022–2023</dd>
+                </div>
+                <div>
+                  <dt>Result</dt>
+                  <dd>Runner-up</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article
+            class="competition"
+            data-search="season 2021 2022 cleland trophy winner competition winner bellshill curling club"
+          >
+            <div class="year" aria-hidden="true">2021–22</div>
+            <div class="competition-main">
+              <div class="competition-title-row">
+                <h3>Cleland Trophy</h3>
+                <span class="status status-winner">Competition winner</span>
+              </div>
+              <p class="location">Bellshill Curling Club</p>
+              <dl class="details">
+                <div>
+                  <dt>Season</dt>
+                  <dd>2021–2022</dd>
+                </div>
+                <div>
+                  <dt>Result</dt>
+                  <dd>Winner</dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+
+          <article
+            class="competition"
+            data-search="2018 four nations team announcement stranraer ice rink hosted ireland 19 21 january did not play car accident 27 november 2017"
+          >
+            <div class="year" aria-hidden="true">2018</div>
+            <div class="competition-main">
+              <div class="competition-title-row">
+                <h3>2018 Four Nations – Team Announcement</h3>
+                <span class="status status-missed">Did not play</span>
+              </div>
+              <p class="location">Stranraer Ice Rink · Hosted by Ireland</p>
+              <dl class="details">
+                <div>
+                  <dt>Event dates</dt>
+                  <dd>19–21 January 2018</dd>
+                </div>
+                <div>
+                  <dt>Announcement</dt>
+                  <dd><time datetime="2017-11-27">27 November 2017</time></dd>
+                </div>
+              </dl>
+              <p class="note">Selected for the team, but unable to play following a car accident on the way.</p>
+            </div>
+          </article>
+
+          <article
+            class="competition"
+            data-search="2017 four nations team announcement greenacres curling rink scotland 28 29 january tournament unknown 14 november 2016"
+          >
+            <div class="year" aria-hidden="true">2017</div>
+            <div class="competition-main">
+              <div class="competition-title-row">
+                <h3>2017 Four Nations – Team Announcement</h3>
+                <span class="status status-unknown">Result unknown</span>
+              </div>
+              <p class="location">Greenacres Curling Rink · Scotland</p>
+              <dl class="details">
+                <div>
+                  <dt>Event dates</dt>
+                  <dd>28–29 January 2017</dd>
+                </div>
+                <div>
+                  <dt>Announcement</dt>
+                  <dd><time datetime="2016-11-14">14 November 2016</time></dd>
+                </div>
+              </dl>
+            </div>
+          </article>
+        </div>
+
+        <div id="empty-state" class="empty-state" hidden>
+          <p>No competitions match that search.</p>
+          <button id="empty-clear" type="button">Show all competitions</button>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>Sarah's curling journey, one stone at a time.</p>
+      <a href="#top">Back to top <span aria-hidden="true">↑</span></a>
+    </footer>
+  </body>
+</html>
