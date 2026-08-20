@@ -354,6 +354,11 @@ h3 {
   background: #fff8c9;
 }
 
+.status-placed {
+  color: #355266;
+  background: #e8f4fa;
+}
+
 .status-missed {
   color: #863a51;
   background: #ffe8ed;
@@ -411,6 +416,39 @@ h3 {
   margin-bottom: 12px;
   font-family: "Newsreader", serif;
   font-size: 28px;
+}
+
+.leadership {
+  padding: 88px 5vw 104px;
+  background: var(--ice);
+}
+
+.leadership-inner {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(220px, 0.55fr) minmax(0, 1fr);
+  gap: clamp(48px, 8vw, 120px);
+}
+
+.leadership-list {
+  border-top: 1px solid var(--ink);
+}
+
+.leadership-role {
+  padding: 30px 0;
+  display: grid;
+  grid-template-columns: 148px minmax(0, 1fr);
+  gap: 28px;
+  border-bottom: 1px solid rgba(51, 40, 74, 0.2);
+}
+
+.leadership-role h3 {
+  margin-bottom: 8px;
+}
+
+.leadership-role .location {
+  margin-bottom: 0;
 }
 
 footer {
@@ -479,6 +517,11 @@ footer a {
     flex-direction: column;
     gap: 8px;
   }
+
+  .leadership-inner {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 }
 
 @media (max-width: 520px) {
@@ -500,7 +543,12 @@ footer a {
     padding: 56px 20px 72px;
   }
 
-  .competition {
+  .leadership {
+    padding: 56px 20px 72px;
+  }
+
+  .competition,
+  .leadership-role {
     grid-template-columns: 1fr;
     gap: 6px;
   }
