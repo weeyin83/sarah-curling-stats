@@ -472,6 +472,27 @@ footer a {
   text-decoration: none;
 }
 
+.footer-note {
+  display: grid;
+  gap: 7px;
+}
+
+.creator-credit {
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 12px;
+}
+
+.creator-credit a {
+  color: var(--white);
+  text-decoration: underline;
+  text-decoration-color: rgba(255, 255, 255, 0.45);
+  text-underline-offset: 3px;
+}
+
+.creator-credit a:hover {
+  text-decoration-color: currentColor;
+}
+
 @media (max-width: 780px) {
   .intro {
     min-height: 0;
