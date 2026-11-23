@@ -1,7 +1,7 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["*.css", "*.js", "*.png", "*.jpg", "*.jpeg", "*.svg", "*.ico"]
+    "exclude": ["*.css", "*.js", "*.mjs", "*.json", "*.png", "*.jpg", "*.jpeg", "*.svg", "*.ico"]
   },
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",
@@ -9,6 +9,7 @@
     "Permissions-Policy": "camera=(), geolocation=(), microphone=()"
   },
   "mimeTypes": {
-    ".json": "application/json"
+    ".json": "application/json",
+    ".mjs": "application/javascript"
   }
 }

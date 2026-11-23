@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="referrer" content="strict-origin-when-cross-origin" />
+    <meta name="description" content="My goal to play at every curling rink in Scotland, with a map of ice visited and still to discover." />
+    <title>Scottish rink tracker | Sarah on Ice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&amp;family=Newsreader:opsz,wght@6..72,600;6..72,700&amp;display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="vendor/leaflet/leaflet.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="vendor/leaflet/leaflet.js" defer></script>
+    <script src="rinks.js" type="module"></script>
+  </head>
+  <body class="rinks-page">
+    <header class="site-header">
+      <a class="brand" href="index.html" aria-label="Sarah on Ice, home">
+        <span class="brand-mark" aria-hidden="true"><span></span></span>
+        <span>Sarah on Ice</span>
+      </a>
+      <nav class="page-nav" aria-label="Main navigation">
+        <a href="index.html">Competitions</a>
+        <a href="rinks.html" aria-current="page">Rink tracker</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="rink-intro" aria-labelledby="page-title">
+        <div class="rink-inner">
+          <p class="eyebrow">A little more of Scotland, one rink at a time</p>
+          <h1 id="page-title">New ice to discover.</h1>
+          <p class="lede">My goal: play at every curling rink in Scotland. A record of familiar houses, new ice and a few much-loved rinks now closed.</p>
+          <p id="data-message" role="status" hidden>Loading the rink record...</p>
+          <noscript><p>This tracker needs JavaScript to load its map and record. You can still <a href="data/rinks.json">read the rink data</a> or browse <a href="https://www.scottishcurling.org/about-us/ice-rinks/">Scottish Curling's directory</a>.</p></noscript>
+          <div id="rink-progress" class="rink-progress" hidden>
+            <p id="progress-summary" class="progress-summary"></p>
+            <label class="sr-only" for="goal-progress">Active Scottish rinks played</label>
+            <progress id="goal-progress" value="0" max="1"></progress>
+            <p id="progress-detail"></p>
+            <div class="rink-achievements">
+              <span id="closed-achievement" class="status status-unknown"></span>
+              <span id="england-achievement" class="status status-placed"></span>
+            </div>
+            <p class="rink-caption">Closed rinks and English ice stops are celebrated separately, not counted towards the Scottish goal.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="rink-browser" class="archive rink-browser" aria-labelledby="rinks-title" hidden>
+        <div class="archive-heading">
+          <div>
+            <p class="eyebrow">The ice trail</p>
+            <h2 id="rinks-title">Rinks, near and far.</h2>
+          </div>
+          <label class="search">
+            <span class="sr-only">Search rinks by name or town</span>
+            <input id="rink-search" type="search" placeholder="Search a rink or town" autocomplete="off" />
+            <kbd aria-hidden="true">/</kbd>
+          </label>
+        </div>
+
+        <form id="rink-filters" class="rink-filters" aria-label="Filter rinks">
+          <label>My record
+            <select id="personal-filter" name="personalStatus">
+              <option value="">All rinks</option>
+              <option value="played">Played</option>
+              <option value="not-played">Not Played</option>
+            </select>
+          </label>
+          <label>Rink status
+            <select id="status-filter" name="status">
+              <option value="">Active and closed</option>
+              <option value="active">Active</option>
+              <option value="closed">Closed</option>
+            </select>
+          </label>
+          <label>Country
+            <select id="country-filter" name="country">
+              <option value="">Scotland and England</option>
+              <option value="Scotland">Scotland</option>
+              <option value="England">England</option>
+            </select>
+          </label>
+          <button id="reset-rinks" class="clear-button" type="button" hidden>Clear search and filters</button>
+        </form>
+
+        <div class="rink-inner">
+          <div class="map-heading">
+            <p id="map-description">Explore the pins, or use the complete list below. The map and list share the same filters; your goal total stays unchanged.</p>
+            <button id="fit-rinks" class="rink-button" type="button" disabled>Fit matching rinks</button>
+          </div>
+          <div id="rink-map" class="rink-map" role="region" aria-label="Map of curling rinks" aria-describedby="map-description"></div>
+          <p id="map-message" class="rink-warning" role="status" hidden></p>
+          <ul class="map-legend" aria-label="Map legend">
+            <li><span class="rink-pin pin-played" aria-hidden="true">P</span>Active / Played</li>
+            <li><span class="rink-pin pin-not-played" aria-hidden="true">N</span>Active / Not Played</li>
+            <li><span class="rink-pin pin-closed" aria-hidden="true">C</span>Closed / historical</li>
+            <li><span class="rink-pin pin-shared" aria-hidden="true">2</span>Shared site: open for both rinks</li>
+          </ul>
+          <p class="rink-caption">The PEAK and NCA share a site marker when both match. Country is shown in every popup. <a href="https://www.openstreetmap.org/fixthemap">Report a base-map issue</a>.</p>
+        </div>
+
+        <div class="results-meta" aria-live="polite" aria-atomic="true">
+          <p id="rink-count"></p>
+        </div>
+        <div id="rink-list" class="rink-list"></div>
+        <div id="rink-empty" class="empty-state" hidden>
+          <p>No rinks match this search.</p>
+          <button id="empty-reset-rinks" type="button">Clear search and filters</button>
+        </div>
+      </section>
+
+      <section class="rink-sources" aria-labelledby="sources-title">
+        <div class="rink-inner">
+          <p class="eyebrow">Keeping the record</p>
+          <h2 id="sources-title">About the goal.</h2>
+          <p id="counting-note">The goal counts active Scottish rinks, with The PEAK and National Curling Academy treated as separate rinks.</p>
+          <p>Based on <a href="https://www.scottishcurling.org/about-us/ice-rinks/">Scottish Curling's official rink directory</a>, cross-checked with <a href="https://trycurling.com/rinks/">Try Curling</a> and venue information. Active means operating as a curling venue, including seasonal ice; check with the venue before travelling.</p>
+          <p id="verified-note"></p>
+          <p>Locations come from public map records, including <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors (ODbL)</a>. Each card links its coordinate source. Gogar Park's historical location is approximate.</p>
+          <p><a href="data/rinks.json">View the rink data and sources</a></p>
+        </div>
+      </section>
+    </main>
+    <footer>
+      <p>Sarah on Ice · A growing record of time on the ice.</p>
+      <a href="index.html">Back to competitions</a>
+    </footer>
+  </body>
+</html>
