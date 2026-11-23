@@ -7,16 +7,16 @@ const data = JSON.parse(await readFile(new URL("../data/rinks.json", import.meta
 
 test("the sourced initial inventory implements Sarah's Scottish goal and separate achievements", () => {
   validateRinkData(data);
-  assert.equal(data.rinks.length, 25);
+  assert.equal(data.rinks.length, 26);
   assert.deepEqual(getProgress(data.rinks), {
-    played: 6, total: 22, remaining: 16, percentage: 27.3, closedPlayed: 2, englandPlayed: 1,
+    played: 6, total: 22, remaining: 16, percentage: 27.3, closedPlayed: 3, englandPlayed: 1,
   });
   assert.deepEqual(filterRinks(data.rinks, {
     personalStatus: "played", status: "active", country: "Scotland",
   }).map((rink) => rink.id).sort(), [
     "greenacres", "kinross", "lanarkshire", "lockerbie", "stranraer", "the-peak",
   ]);
-  assert.deepEqual(filterRinks(data.rinks, { status: "closed" }).map((rink) => rink.id), ["ayr", "gogar-park"]);
+  assert.deepEqual(filterRinks(data.rinks, { status: "closed" }).map((rink) => rink.id), ["ayr", "forest-hills", "gogar-park"]);
   assert.equal(data.rinks.find((rink) => rink.id === "national-curling-academy").personalStatus, "not-played");
   assert.equal(filterRinks(data.rinks, { country: "England", personalStatus: "played" })[0].id, "flower-bowl");
   for (const rink of data.rinks) {
@@ -32,10 +32,10 @@ test("progress responds to new visits and closure without counting English or cl
   assert.equal(getProgress(updated).played, 7);
   updated.find((rink) => rink.id === "lanarkshire").status = "closed";
   assert.deepEqual(getProgress(updated), {
-    played: 6, total: 21, remaining: 15, percentage: 28.6, closedPlayed: 3, englandPlayed: 1,
+    played: 6, total: 21, remaining: 15, percentage: 28.6, closedPlayed: 4, englandPlayed: 1,
   });
   assert.deepEqual(getProgress(updated.filter((rink) => rink.country !== "Scotland" || rink.status === "closed")), {
-    played: 0, total: 0, remaining: 0, percentage: 0, closedPlayed: 3, englandPlayed: 1,
+    played: 0, total: 0, remaining: 0, percentage: 0, closedPlayed: 4, englandPlayed: 1,
   });
 });
 
@@ -46,6 +46,11 @@ test("search matches every term across names, aliases and towns, combined with a
   }).map((rink) => rink.id), ["lanarkshire"]);
   assert.deepEqual(filterRinks(data.rinks, { search: "preston", country: "England" }).map((rink) => rink.id), ["flower-bowl"]);
   assert.deepEqual(filterRinks(data.rinks, { search: "gogarburn", status: "closed" }).map((rink) => rink.id), ["gogar-park"]);
+  for (const search of ["Barratt Trossachs", "Macdonald Forest Hills", "Loch Ard Aberfoyle"]) {
+    assert.deepEqual(filterRinks(data.rinks, {
+      search, personalStatus: "played", status: "closed", country: "Scotland",
+    }).map((rink) => rink.id), ["forest-hills"]);
+  }
   assert.deepEqual(filterRinks(data.rinks, { search: "NCA stirling", personalStatus: "not-played" }).map((rink) => rink.id), ["national-curling-academy"]);
   assert.deepEqual(filterRinks(data.rinks, { search: "greenacres inverness" }), []);
   assert.deepEqual(filterRinks(data.rinks, { country: "England", personalStatus: "not-played" }), []);
@@ -55,7 +60,7 @@ test("search matches every term across names, aliases and towns, combined with a
 
 test("both Stirling rinks remain available in a shared site and split correctly when filtered", () => {
   const groups = groupRinkSites(filterRinks(data.rinks));
-  assert.equal(groups.length, 24);
+  assert.equal(groups.length, 25);
   assert.equal(groups.flat().length, data.rinks.length);
   const stirling = groups.find((site) => site.some((rink) => rink.id === "the-peak"));
   assert.deepEqual(stirling.map((rink) => rink.id).sort(), ["national-curling-academy", "the-peak"]);

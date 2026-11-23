@@ -293,6 +293,21 @@
       "notes": "The Limekiln Road rink closed in September 2023, not the earlier Beresford Terrace rink."
     },
     {
+      "id": "forest-hills",
+      "name": "Forest Hills Curling Rink",
+      "aliases": ["Macdonald Forest Hills Hotel & Spa", "Barratt Forest Hills Trossachs Club", "Loch Ard"],
+      "town": "Kinlochard / Aberfoyle",
+      "country": "Scotland",
+      "latitude": 56.18883,
+      "longitude": -4.48047,
+      "status": "closed",
+      "personalStatus": "played",
+      "sourceUrl": "https://strathardheritage.org/archive/the-history-of-forest-hills-4-curling-and-lochside-developments/",
+      "coordinateSource": "https://www.trove.scot/place/134571",
+      "coordinateApproximate": true,
+      "notes": "Former rink at the Barratt Forest Hills Trossachs Club, now Macdonald Forest Hills Hotel & Spa, on Loch Ard near Aberfoyle. Opened in 1984 and closed in April 2006. Approximate pin marks the hotel site, not the former rink footprint."
+    },
+    {
       "id": "gogar-park",
       "name": "Gogar Park Curling Rink",
       "aliases": ["Gogarburn"],

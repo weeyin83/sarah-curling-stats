@@ -48,15 +48,15 @@ Edit [data/rinks.json](data/rinks.json); both the map and cards use this single 
 - Use the same `siteId` only for neighbouring rinks sharing a site. They count separately but share a marker, whose popup exposes every matching rink. Store each rink's genuine coordinates; do not offset markers artificially.
 - Keep operational status, coordinates and their sources current. Update the dataset's `verifiedAt` (`YYYY-MM-DD`) when rechecking the directory and location sources, not merely when recording a visit.
 
-The initial inventory, checked on 23 November 2026, has **25 entries**:
+The inventory, checked on 23 November 2026, has **26 entries**:
 
 - **6 of 22 active Scottish rinks played (27.3%)**; 16 remaining.
-- **2 closed Scottish rinks played**: Ayr (Limekiln Road) and Gogar Park, Edinburgh.
+- **3 closed Scottish rinks played**: Ayr (Limekiln Road), Forest Hills (Loch Ard, near Aberfoyle) and Gogar Park, Edinburgh.
 - **1 English rink played**: The Flower Bowl Entertainment Centre, Brock / Preston.
 
 The goal follows [Scottish Curling's directory](https://www.scottishcurling.org/about-us/ice-rinks/), cross-checked against [Try Curling](https://trycurling.com/rinks/) and venue information. The directory groups The PEAK and National Curling Academy together in its 21 venues; this tracker deliberately counts them as **two rinks**, producing 22. Only The PEAK starts as played. Closed rinks and England never affect the Scottish numerator or denominator. Search and filters change visible cards/pins, not goal totals.
 
-Each record links its geographic source. The Gogar Park pin is explicitly approximate, at the historic house/site rather than the former rink footprint. Ayr uses the Limekiln Road premises, not the older Beresford Terrace rink; Aviemore uses the current community rink, not the historic Aviemore Centre rink. Map records include [OpenStreetMap data (ODbL)](https://www.openstreetmap.org/copyright).
+Each record links its geographic source. The Gogar Park and Forest Hills pins are explicitly approximate, at the historic house/hotel sites rather than the former rink footprints. Forest Hills, formerly the Barratt Forest Hills Trossachs Club, closed its rink in April 2006; see [Strathard Heritage's history](https://strathardheritage.org/archive/the-history-of-forest-hills-4-curling-and-lochside-developments/). Ayr uses the Limekiln Road premises, not the older Beresford Terrace rink; Aviemore uses the current community rink, not the historic Aviemore Centre rink. Map records include [OpenStreetMap data (ODbL)](https://www.openstreetmap.org/copyright).
 
 ### Map hosting and failure states
 
