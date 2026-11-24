@@ -9,12 +9,12 @@ test("the sourced initial inventory implements Sarah's Scottish goal and separat
   validateRinkData(data);
   assert.equal(data.rinks.length, 26);
   assert.deepEqual(getProgress(data.rinks), {
-    played: 6, total: 22, remaining: 16, percentage: 27.3, closedPlayed: 3, englandPlayed: 1,
+    played: 7, total: 22, remaining: 15, percentage: 31.8, closedPlayed: 3, englandPlayed: 1,
   });
   assert.deepEqual(filterRinks(data.rinks, {
     personalStatus: "played", status: "active", country: "Scotland",
   }).map((rink) => rink.id).sort(), [
-    "greenacres", "kinross", "lanarkshire", "lockerbie", "stranraer", "the-peak",
+    "dundee", "greenacres", "kinross", "lanarkshire", "lockerbie", "stranraer", "the-peak",
   ]);
   assert.deepEqual(filterRinks(data.rinks, { status: "closed" }).map((rink) => rink.id), ["ayr", "forest-hills", "gogar-park"]);
   assert.equal(data.rinks.find((rink) => rink.id === "national-curling-academy").personalStatus, "not-played");
@@ -29,10 +29,10 @@ test("the sourced initial inventory implements Sarah's Scottish goal and separat
 test("progress responds to new visits and closure without counting English or closed achievements", () => {
   const updated = structuredClone(data.rinks);
   updated.find((rink) => rink.id === "national-curling-academy").personalStatus = "played";
-  assert.equal(getProgress(updated).played, 7);
+  assert.equal(getProgress(updated).played, 8);
   updated.find((rink) => rink.id === "lanarkshire").status = "closed";
   assert.deepEqual(getProgress(updated), {
-    played: 6, total: 21, remaining: 15, percentage: 28.6, closedPlayed: 4, englandPlayed: 1,
+    played: 7, total: 21, remaining: 14, percentage: 33.3, closedPlayed: 4, englandPlayed: 1,
   });
   assert.deepEqual(getProgress(updated.filter((rink) => rink.country !== "Scotland" || rink.status === "closed")), {
     played: 0, total: 0, remaining: 0, percentage: 0, closedPlayed: 4, englandPlayed: 1,

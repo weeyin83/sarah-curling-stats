@@ -97,7 +97,7 @@
       "latitude": 56.4816457,
       "longitude": -3.0248146,
       "status": "active",
-      "personalStatus": "not-played",
+      "personalStatus": "played",
       "website": "https://www.dundeeicearena.co.uk/",
       "coordinateSource": "https://www.openstreetmap.org/way/39531090"
     },
